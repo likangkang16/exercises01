@@ -45,9 +45,14 @@ public class SpringBucksApplication  implements ApplicationRunner {
 
 		Coffee coffeeD = new Coffee(3L,new Date(), new Date(),"拿铁C",140);
 		coffeeService.update(coffeeD);
-		coffeeService.deleter("3");
-		List<Coffee> coffeeList = coffeeService.findAll();
-		System.out.println(coffeeList.toString());
+		//coffeeService.deleter("3");
+	//	List<Coffee> coffeeList = coffeeService.findAll();
+		Page<Coffee> coffeePage = coffeeService.findAllByName("拿铁A");
+		coffeePage.stream().forEach(x->{
+			System.out.println(x.toString());
+		});
+
+		//System.out.println(coffeeList.toString());
 	}
 }
 

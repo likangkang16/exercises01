@@ -1,6 +1,7 @@
 package geektime.spring.springbucks.service;
 
 import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import geektime.spring.springbucks.model.Coffee;
 import geektime.spring.springbucks.repository.CoffeeRepository;
 import geektime.spring.springbucks.until.RedisUntil;
@@ -74,9 +75,9 @@ public class CoffeeService {
     }
 
 
-    public Page<Coffee> findAllById(Integer id) {
-        // PageHelper.startPage(2, 2);
-        List<Coffee> list = coffeeRepository.findAll();
+    public Page<Coffee> findAllByName(String name) {
+         PageHelper.startPage(1, 2,false);
+        List<Coffee> list = coffeeRepository.findAllByName(name);
         Page<Coffee> list1 = (Page<Coffee>) list;
         return list1;
     }

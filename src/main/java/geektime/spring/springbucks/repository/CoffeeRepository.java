@@ -16,8 +16,8 @@ public interface CoffeeRepository {
             "#{name},#{price});")
     void saveAll(Coffee coffees);
 
-    @Select("SELECT  * FROM t_coffee where id =#{id};")
-    Page<Coffee> findAllById(@Param("id") String id);
+    @Select("SELECT  * FROM t_coffee where t_coffee.name= #{name}")
+    Page<Coffee> findAllByName(@Param("name") String name);
 
     @Update("update t_coffee set price =#{price} where id =#{id};")
     int update(Coffee coffee);
