@@ -16,7 +16,7 @@ public interface CoffeeRepository {
             "#{name},#{price});")
     void saveAll(Coffee coffees);
 
-    @Select("SELECT  * FROM t_coffee where t_coffee.name= #{name}")
+    @Select("SELECT  * FROM t_coffee where name like '%#{name}%' order by id desc ")
     Page<Coffee> findAllByName(@Param("name") String name);
 
     @Update("update t_coffee set price =#{price} where id =#{id};")
